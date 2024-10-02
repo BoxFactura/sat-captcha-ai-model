@@ -1,0 +1,9 @@
+batch_size: 64
+height: 60
+learning_rate: 0.001
+max_text_length: 6
+model_path: model
+train_epochs: 1000
+train_workers: 20
+vocab: Y65WRD98SMBG3NJ21CP4KF7ZXHVTQL
+width: 160

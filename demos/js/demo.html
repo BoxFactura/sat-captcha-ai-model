@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAT Captcha AI Model</title>
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  </head>
+  <body>
+    <h1>SAT Captcha AI Model</h1>
+    <input type="file" id="imageInput" accept="image/*" />
+    <button id="processButton">Procesar</button>
+    <p id="ocrResult"></p>
+    <canvas></canvas>
+
+    <script>
+      const alphabet = 'Y65WRD98SMBG3NJ21CP4KF7ZXHVTQL'.split('');
+
+      function softmax(arr) {
+        const max = Math.max(...arr);
+        const exps = arr.map((x) => Math.exp(x));
+        const sum = exps.reduce((a, b) => a + b, 0);
+        return exps.map((x) => x / sum);
+      }
+
+      async function processCaptcha() {
+        const imageInput = document.getElementById('imageInput').files[0];
+        const img = new Image();
+        img.src = URL.createObjectURL(imageInput);
+
+        img.onload = async () => {
+          const canvas = document.querySelector('canvas');
+          canvas.width = 160;
+          canvas.height = 60;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, 160, 60);
+
+          const imageData = ctx.getImageData(0, 0, 160, 60);
+          const pixels = [];
+
+          for (let i = 0; i < imageData.data.length; i += 4) {
+            pixels.push(imageData.data[i]);
+            pixels.push(imageData.data[i + 1]);
+            pixels.push(imageData.data[i + 2]);
+          }
+
+          const inputTensor = new ort.Tensor('float32', pixels, [1, 60, 160, 3]);
+          const session = await ort.InferenceSession.create('model.onnx');
+          const results = await session.run({ input: inputTensor });
+          const output = [...results.output.data];
+
+          let ocrText = [];
+
+          const [, , numClasses] = results.output.dims;
+          for (let i = 0; i < output.length; i += numClasses) {
+            const logitsArray = output.slice(i, i + numClasses);
+            const probs = softmax(logitsArray);
+            const maxIndex = probs.indexOf(Math.max(...probs));
+            if (maxIndex !== -1 && alphabet[maxIndex] !== ocrText[ocrText.length - 1]) {
+              ocrText.push(alphabet[maxIndex]);
+            }
+          }
+
+          document.getElementById('ocrResult').innerText = 'Resultado: ' + ocrText.join('');
+        };
+      }
+
+      document.getElementById('processButton').addEventListener('click', processCaptcha);
+    </script>
+  </body>
+</html>

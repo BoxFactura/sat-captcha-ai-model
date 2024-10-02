@@ -1,0 +1,126 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
+    ast (2.4.2)
+    base64 (0.2.0)
+    connection_pool (2.4.1)
+    domain_name (0.6.20240107)
+    dotenv (3.1.2)
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-arm-linux-gnu)
+    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86-linux-gnu)
+    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
+    http-cookie (1.0.7)
+      domain_name (~> 0.5)
+    json (2.7.2)
+    language_server-protocol (3.17.0.3)
+    mechanize (2.12.0)
+      addressable (~> 2.8)
+      base64
+      domain_name (~> 0.5, >= 0.5.20190701)
+      http-cookie (~> 1.0, >= 1.0.3)
+      mime-types (~> 3.0)
+      net-http-digest_auth (~> 1.4, >= 1.4.1)
+      net-http-persistent (>= 2.5.2, < 5.0.dev)
+      nkf
+      nokogiri (~> 1.11, >= 1.11.2)
+      rubyntlm (~> 0.6, >= 0.6.3)
+      webrick (~> 1.7)
+      webrobots (~> 0.1.2)
+    mime-types (3.5.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2024.0806)
+    mini_magick (5.0.1)
+    net-http-digest_auth (1.4.1)
+    net-http-persistent (4.0.2)
+      connection_pool (~> 2.2)
+    nkf (0.2.0)
+    nokogiri (1.16.7-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.7-arm-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.7-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.7-x86-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.7-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.7-x86_64-linux)
+      racc (~> 1.4)
+    numo (0.1.1)
+      numo-fftw (~> 0.1.1)
+      numo-gnuplot (~> 0.2.4)
+      numo-gsl (~> 0.1.1)
+      numo-linalg (~> 0.1.0)
+      numo-narray (~> 0.9.1)
+    numo-fftw (0.1.1)
+      numo-narray (~> 0.9.0)
+    numo-gnuplot (0.2.4)
+    numo-gsl (0.1.2)
+      numo-narray (>= 0.9.0.8)
+    numo-linalg (0.1.7)
+      numo-narray (>= 0.9.1.4)
+    numo-narray (0.9.2.1)
+    onnxruntime (0.9.1)
+      ffi
+    onnxruntime (0.9.1-aarch64-linux)
+      ffi
+    onnxruntime (0.9.1-arm64-darwin)
+      ffi
+    onnxruntime (0.9.1-x86_64-darwin)
+      ffi
+    onnxruntime (0.9.1-x86_64-linux)
+      ffi
+    parallel (1.26.3)
+    parser (3.3.4.2)
+      ast (~> 2.4.1)
+      racc
+    public_suffix (6.0.1)
+    racc (1.8.1)
+    rainbow (3.1.1)
+    regexp_parser (2.9.2)
+    rexml (3.3.5)
+      strscan
+    rubocop (1.65.1)
+      json (~> 2.3)
+      language_server-protocol (>= 3.17.0)
+      parallel (~> 1.10)
+      parser (>= 3.3.0.2)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 2.4, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 2.4.0, < 3.0)
+    rubocop-ast (1.32.1)
+      parser (>= 3.3.1.0)
+    ruby-progressbar (1.13.0)
+    rubyntlm (0.6.5)
+      base64
+    strscan (3.1.0)
+    unicode-display_width (2.5.0)
+    webrick (1.8.1)
+    webrobots (0.1.2)
+
+PLATFORMS
+  aarch64-linux
+  arm-linux
+  arm64-darwin
+  x86-linux
+  x86_64-darwin
+  x86_64-linux
+
+DEPENDENCIES
+  dotenv
+  mechanize
+  mini_magick
+  numo
+  onnxruntime
+  rubocop
+
+BUNDLED WITH
+   2.5.11

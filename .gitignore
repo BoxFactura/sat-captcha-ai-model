@@ -1,0 +1,7 @@
+node_modules/
+vendor/
+__pycache__
+model/logs/
+model/logs.log
+model/train.csv
+model/val.csv
